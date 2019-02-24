@@ -1,25 +1,53 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import getYelp from './services/api-helper';
+import Header from './components/Header';
+import Nav from './components/Nav';
+import RestaurantPage from './components/RestaurantPage';
+import Homepage from './components/Homepage';
+import RestaurantList from './components/RestaurantList';
+import Footer from './components/Footer';
+
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      zipCode: '',
+      restaurant: ''
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+  async componentDidMount() {
+    const allRest = await getYelp();
+    console.log(allRest)
+    return allRest;
+  }
+  handleChange(e) {
+    this.setState({
+      zipCode: e.target.value
+    })
+  }
+  async handleSubmit(e){
+    e.preventDefault()
+    const zip = this.state.zipCode
+    const restData = await getYelp(zip)
+      this.setState({
+        restaurant: restData
+    })
+  }
   render() {
     return (
+
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header />
+        <Homepage onSubmit={this.handleSubmit} onChange={this.handleChange} />
+        <Nav />
+        <RestaurantList />
+        <RestaurantPage />
+        <Footer />
+
       </div>
     );
   }
