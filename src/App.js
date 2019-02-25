@@ -14,10 +14,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurant: [],
+      restaurants: null,
       zipCode: '',
-      randomR: '',
-      randomL: ''
+      randomR: null,
+      randomL: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -28,7 +28,7 @@ class App extends Component {
     // console.log(allRest)
     this.setState({
       zipCode: '',
-      restaurant: allRest,
+      restaurants: allRest,
     })
   }
   handleChange(e) {
@@ -40,11 +40,11 @@ class App extends Component {
     e.preventDefault()
     const zip = this.state.zipCode
     const restData = await getYelp(zip)
-    const idx = Math.floor(Math.random() * 20)
+    const idx = Math.floor(Math.random() * restData.length)
     this.setState({
-      restaurant: restData,
-      randomR: restData[idx],
-      randomL: restData[idx].location.display_address
+      restaurants: restData,
+      randomRestdata: restData[idx],
+      
     })
   }
  
@@ -55,11 +55,8 @@ class App extends Component {
         <Header />
         <Homepage onSubmit={this.handleSubmit} onChange={this.handleChange} />
         <Nav />
-        <RestaurantList restaurant={this.state.restaurant} />
-        <RestaurantPage
-          randRest={this.state.randomR}
-          randAddress={this.state.randomL}
-          randPhone={this.state.randomR} />
+        <RestaurantList restaurant={this.state.restaurants} />
+        <RestaurantPage randRest={this.state.randomRestdata} />
 
 
       </div>
