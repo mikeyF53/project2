@@ -13,8 +13,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      zipCode: '',
-      restaurant: ''
+      zipCode: 11365,
+      restaurant: []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -22,6 +22,9 @@ class App extends Component {
   async componentDidMount() {
     const allRest = await getYelp();
     console.log(allRest)
+    this.setState({
+      restaurant: allRest
+    })
     return allRest;
   }
   handleChange(e) {
@@ -44,7 +47,7 @@ class App extends Component {
         <Header />
         <Homepage onSubmit={this.handleSubmit} onChange={this.handleChange} />
         <Nav />
-        <RestaurantList />
+        <RestaurantList restaurant={this.state.restaurant} />
         <RestaurantPage />
         <Footer />
 

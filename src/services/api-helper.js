@@ -17,7 +17,7 @@ const getYelp = async (zip) => {
       Authorization: 'Bearer ' + API_KEY
     }
   })
-  return resp.data;
+  return resp.data.businesses;
 };
 
 
