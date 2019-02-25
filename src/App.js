@@ -9,21 +9,28 @@ import Footer from './components/Footer';
 
 import './App.css';
 
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      zipCode: 11365,
-      restaurant: []
+      zipCode: 20906,
+      restaurant: [],
+      randomR: ''
+      
+
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+
   }
   async componentDidMount() {
     const allRest = await getYelp();
-    console.log(allRest)
+    // console.log(allRest)
     this.setState({
-      restaurant: allRest
+      restaurant: allRest,
+      randomR: allRest
+      
     })
     return allRest;
   }
@@ -32,15 +39,20 @@ class App extends Component {
       zipCode: e.target.value
     })
   }
-  async handleSubmit(e){
+  async handleSubmit(e) {
     e.preventDefault()
+    const idx = Math.floor(Math.random() * 20)
     const zip = this.state.zipCode
     const restData = await getYelp(zip)
-      this.setState({
-        restaurant: restData
+    this.setState({
+      restaurant: restData,
+      randomR: restData[idx]
     })
   }
+  
+
   render() {
+
     return (
 
       <div className="App">
@@ -48,8 +60,7 @@ class App extends Component {
         <Homepage onSubmit={this.handleSubmit} onChange={this.handleChange} />
         <Nav />
         <RestaurantList restaurant={this.state.restaurant} />
-        <RestaurantPage />
-        <Footer />
+        <RestaurantPage  randRest={this.state.randomR} />
 
       </div>
     );
