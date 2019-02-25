@@ -11,14 +11,13 @@ import './App.css';
 
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      zipCode: 20906,
       restaurant: [],
-      randomR: ''
-      
-
+      zipCode: '',
+      randomR: '',
+      randomL: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -28,11 +27,9 @@ class App extends Component {
     const allRest = await getYelp();
     // console.log(allRest)
     this.setState({
+      zipCode: '',
       restaurant: allRest,
-      randomR: allRest
-      
     })
-    return allRest;
   }
   handleChange(e) {
     this.setState({
@@ -41,26 +38,29 @@ class App extends Component {
   }
   async handleSubmit(e) {
     e.preventDefault()
-    const idx = Math.floor(Math.random() * 20)
     const zip = this.state.zipCode
     const restData = await getYelp(zip)
+    const idx = Math.floor(Math.random() * 20)
     this.setState({
       restaurant: restData,
-      randomR: restData[idx]
+      randomR: restData[idx],
+      randomL: restData[idx].location.display_address
     })
   }
-  
+ 
 
   render() {
-
     return (
-
       <div className="App">
         <Header />
         <Homepage onSubmit={this.handleSubmit} onChange={this.handleChange} />
         <Nav />
         <RestaurantList restaurant={this.state.restaurant} />
-        <RestaurantPage  randRest={this.state.randomR} />
+        <RestaurantPage
+          randRest={this.state.randomR}
+          randAddress={this.state.randomL}
+          randPhone={this.state.randomR} />
+
 
       </div>
     );
