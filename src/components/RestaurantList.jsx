@@ -1,8 +1,6 @@
 import React from 'react'
 
 const RestaurantList = (props) => {
-  console.log(props.restaurant)
-
   return(
 
     <div>
