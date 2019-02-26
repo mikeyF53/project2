@@ -6,6 +6,7 @@ import RestaurantPage from './components/RestaurantPage';
 import Homepage from './components/Homepage';
 import RestaurantList from './components/RestaurantList';
 import Footer from './components/Footer';
+import { Route, Link } from "react-router-dom";
 
 import './App.css';
 
@@ -28,7 +29,7 @@ class App extends Component {
     // console.log(allRest)
     this.setState({
       zipCode: '',
-      restaurants: allRest,
+      restaurants: null,
     })
   }
   handleChange(e) {
@@ -44,21 +45,24 @@ class App extends Component {
     this.setState({
       restaurants: restData,
       randomRestdata: restData[idx],
-      
     })
+    
   }
  
 
   render() {
     return (
       <div className="App">
+      <Link to="/components/RestaurantList">List of Restaurants</Link>
+      <Route path="/components/RestaurantList" render={(props) => (
+        <RestaurantList {...props} restaurant={this.state.restaurants} />
+      )} />
         <Header />
         <Homepage onSubmit={this.handleSubmit} onChange={this.handleChange} />
         <Nav />
-        <RestaurantList restaurant={this.state.restaurants} />
+
         <RestaurantPage randRest={this.state.randomRestdata} />
-
-
+    
       </div>
     );
   }
