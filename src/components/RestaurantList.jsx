@@ -4,7 +4,7 @@ import { Route, Link } from "react-router-dom";
 
 
 const RestaurantList = (props) => {
-  console.log(props.restaurant)
+  console.log(props)
   return (
     <div>
       <h4>
@@ -22,6 +22,7 @@ const RestaurantList = (props) => {
                 <p key={id}>{arr}</p>)}
                 <p>{data.phone}</p>
                 <img src={data.image_url} alt='yay pic'/>
+                <p>{data.id}</p>
                 <p>4</p>
               </div>
             )}

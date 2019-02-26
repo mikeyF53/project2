@@ -11,6 +11,7 @@ const Homepage = (props) => {
         <input type='text' placeholder='ZipCode or City' onChange={props.onChange} />
         <input type='submit' value='Submit' />
       </form>
+      
     </div>
 
   )

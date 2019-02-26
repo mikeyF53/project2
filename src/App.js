@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import getYelp from './services/api-helper';
+import { getYelp , yelpImg } from './services/api-helper';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import RestaurantPage from './components/RestaurantPage';
@@ -23,28 +23,33 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
   async componentDidMount() {
-    const allRest = await getYelp();
-    // console.log(allRest)
+    const allRest = await getYelp()
+    
+    // console.log(getImg)
     this.setState({
       zipCode: '',
       restaurants: null,
-      randomRestdata: null
+      randomRestdata: null,
+      // id:null
     })
   }
   handleChange(e) {
     this.setState({
-      zipCode: e.target.value
+      zipCode: e.target.value,
+      // id:
     })
   }
   async handleSubmit(e) {
     e.preventDefault()
     const zip = this.state.zipCode
-    console.log(zip)
+    // const id = this.state.id
     const restData = await getYelp(zip)
+    // const getImg = await yelpImg(id);
     const idx = Math.floor(Math.random() * restData.length)
     this.setState({
       restaurants: restData,
-      randomRestData: restData[idx]
+      randomRestData: restData[idx],
+      // image: getImg.photos
     })
   }
   render() {
@@ -55,8 +60,10 @@ class App extends Component {
           <RestaurantList {...props} restaurant={this.state.restaurants} />
         )} />
         <Homepage onSubmit={this.handleSubmit} onChange={this.handleChange} />
+        
+          <Route exact path="/" render={RestaurantPage}/>
 
-        <RestaurantPage randRest={this.state.randomRestData} />
+        
       </div>
     );
   }

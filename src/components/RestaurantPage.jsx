@@ -2,10 +2,11 @@ import React from 'react'
 import { Route, Link } from "react-router-dom";
 
 const RestaurantPage = (props) => {
-  // console.log(props.randRest)
+  // console.log(props)
   return (
     <div>
       <Link to='/'>Back to Home</Link>
+      
       <h2>Random Pick For You</h2>
       {
         props.randRest ?
