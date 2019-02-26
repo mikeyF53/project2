@@ -17,12 +17,10 @@ class App extends Component {
     this.state = {
       restaurants: null,
       zipCode: '',
-      randomR: null,
-      randomL: null
+      randomRestdata: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
-
   }
   async componentDidMount() {
     const allRest = await getYelp();
@@ -30,6 +28,7 @@ class App extends Component {
     this.setState({
       zipCode: '',
       restaurants: null,
+      randomRestdata: null
     })
   }
   handleChange(e) {
@@ -40,29 +39,24 @@ class App extends Component {
   async handleSubmit(e) {
     e.preventDefault()
     const zip = this.state.zipCode
+    console.log(zip)
     const restData = await getYelp(zip)
     const idx = Math.floor(Math.random() * restData.length)
     this.setState({
       restaurants: restData,
-      randomRestdata: restData[idx],
+      randomRestData: restData[idx]
     })
-    
   }
- 
-
   render() {
     return (
       <div className="App">
-      <Link to="/components/RestaurantList">List of Restaurants</Link>
-      <Route path="/components/RestaurantList" render={(props) => (
-        <RestaurantList {...props} restaurant={this.state.restaurants} />
-      )} />
-        <Header />
+        <Link to="/components/RestaurantList">List of Restaurants</Link>
+        <Route exact path="/components/RestaurantList" render={(props) => (
+          <RestaurantList {...props} restaurant={this.state.restaurants} />
+        )} />
         <Homepage onSubmit={this.handleSubmit} onChange={this.handleChange} />
-        <Nav />
 
-        <RestaurantPage randRest={this.state.randomRestdata} />
-    
+        <RestaurantPage randRest={this.state.randomRestData} />
       </div>
     );
   }
