@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getYelp , yelpImg } from './services/api-helper';
+import { getYelp, yelpImg } from './services/api-helper';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import RestaurantPage from './components/RestaurantPage';
@@ -17,28 +17,32 @@ class App extends Component {
     this.state = {
       restaurants: null,
       zipCode: '',
-      randomRestdata: null
+      randomRestdata: null,
+      // id: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
   async componentDidMount() {
     const allRest = await getYelp()
-    
     // console.log(getImg)
     this.setState({
       zipCode: '',
       restaurants: null,
       randomRestdata: null,
-      // id:null
+      // id: null
     })
   }
   handleChange(e) {
     this.setState({
       zipCode: e.target.value,
-      // id:
     })
   }
+  // handleIdChange() {
+  //   this.setState({
+  //     id:  restaurant.id
+  //   })
+  // }
   async handleSubmit(e) {
     e.preventDefault()
     const zip = this.state.zipCode
@@ -47,6 +51,7 @@ class App extends Component {
     // const getImg = await yelpImg(id);
     const idx = Math.floor(Math.random() * restData.length)
     this.setState({
+      waitingText: null,
       restaurants: restData,
       randomRestData: restData[idx],
       // image: getImg.photos
@@ -55,15 +60,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Link to="/components/RestaurantList">List of Restaurants</Link>
         <Route exact path="/components/RestaurantList" render={(props) => (
           <RestaurantList {...props} restaurant={this.state.restaurants} />
         )} />
-        <Homepage onSubmit={this.handleSubmit} onChange={this.handleChange} />
-        
-          <Route exact path="/" render={RestaurantPage}/>
+        <Route exact path='/' render={(props) => (
+          <Homepage onSubmit={this.handleSubmit} onChange={this.handleChange} />
+        )} />
 
-        
+        <Route exact path="/" render={(props) => (
+          <RestaurantPage {...props} randRest={this.state.randomRestData} />
+        )} />
       </div>
     );
   }

@@ -1,12 +1,11 @@
 import React from 'react'
 import { Route, Link } from "react-router-dom";
+import RestaurantList from './RestaurantList';
 
 const RestaurantPage = (props) => {
   // console.log(props)
   return (
     <div>
-      <Link to='/'>Back to Home</Link>
-      
       <h2>Random Pick For You</h2>
       {
         props.randRest ?
@@ -17,8 +16,11 @@ const RestaurantPage = (props) => {
             <img src={props.randRest.image_url} alt='yay pic'/>
           </div>
           :
-          <></>
+          <>LOADING GIF</>
       }
+       <br />
+      If you dont like it here's a<br />
+      <Link to="/components/RestaurantList">List of Restaurants</Link>
     </div>
   )
 }
