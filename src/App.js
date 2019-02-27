@@ -7,30 +7,27 @@ import Homepage from './components/Homepage';
 import RestaurantList from './components/RestaurantList';
 import Footer from './components/Footer';
 import { Route, Link } from "react-router-dom";
-
 import './App.css';
-
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       restaurants: null,
-      zipCode: '',
+      zipCode: null,
       randomRestdata: null,
-      // id: null
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    // this.getCurrentPosition = this.getCurrentPosition.bind(this);
   }
   async componentDidMount() {
+
     const allRest = await getYelp()
-    // console.log(getImg)
     this.setState({
-      zipCode: '',
+      zipCode: null,
       restaurants: null,
-      randomRestdata: null,
-      // id: null
+      randomRestdata: null
     })
   }
   handleChange(e) {
@@ -38,37 +35,45 @@ class App extends Component {
       zipCode: e.target.value,
     })
   }
-  // handleIdChange() {
-  //   this.setState({
-  //     id:  restaurant.id
-  //   })
-  // }
+
   async handleSubmit(e) {
     e.preventDefault()
     const zip = this.state.zipCode
-    // const id = this.state.id
     const restData = await getYelp(zip)
-    // const getImg = await yelpImg(id);
     const idx = Math.floor(Math.random() * restData.length)
     this.setState({
       waitingText: null,
       restaurants: restData,
       randomRestData: restData[idx],
-      // image: getImg.photos
     })
   }
+
+  // getCurrentPosition() {
+  //   navigator.geolocation.getCurrentPosition(position => {
+  //     console.log(`${position.coords.latitude} ${position.coords.longitude}`);
+  //   });
+  //   }
+  
+
+
+
   render() {
     return (
-      <div className="App">
+      <div className="App" >
+
         <Route exact path="/components/RestaurantList" render={(props) => (
           <RestaurantList {...props} restaurant={this.state.restaurants} />
         )} />
         <Route exact path='/' render={(props) => (
-          <Homepage onSubmit={this.handleSubmit} onChange={this.handleChange} />
-        )} />
+          <Homepage
 
+            onSubmit={this.handleSubmit}
+            onChange={this.handleChange} />
+        )} />
         <Route exact path="/" render={(props) => (
-          <RestaurantPage {...props} randRest={this.state.randomRestData} />
+          <RestaurantPage {...props}
+            // getLocation={this.getCurrentPosition()}
+            randRest={this.state.randomRestData} />
         )} />
       </div>
     );

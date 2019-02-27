@@ -2,6 +2,24 @@
   text-align: center;
 }
 img {
-  width: 100px;
+  width: 150px;
   height: 100px;
+  border-radius: 25px;
+}
+body {
+  background: #273E47;
+  color: #BF2A45;
+}
+a {
+  text-decoration: none;
+  color: #AD7299;
+}
+input {
+  border-radius: 20px;
+
+
+}
+.listInfo {
+  width: 250px;
+  display: inline-block;
 }

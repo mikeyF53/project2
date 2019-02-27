@@ -12,7 +12,7 @@ const URL2 = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/busine
 // });
 
 const getYelp = async (zip) => {
-  const resp = await axios(`${URL}?location=${zip}/`, {
+  const resp = await axios(`${URL}?location=${zip}?radius=1`, {
     headers: {
       Authorization: 'Bearer ' + API_KEY
     }

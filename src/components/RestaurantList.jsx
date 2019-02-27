@@ -4,24 +4,22 @@ import RestaurantPage from './RestaurantPage'
 import { Route, Link } from "react-router-dom";
 
 const RestaurantList = (props) => {
-  console.log(props)
+  console.log(props.restaurant)
   return (
     <div>
       <Link to='/'>Back to Random Picker</Link>
-      <h4>
-      </h4>
+      
       <h3>Restaurant List</h3>
       {
         props.restaurant ?
-          <div>
-            {props.restaurant.map((data, id) =>
-              <div id={data.id}>
-                <p className='name' key={id}>{data.name}</p>
+          <div className='listContainer'>
+            {props.restaurant.map(data =>
+              <div className='listInfo' key={data.id}>
+                <h2 className='listName' >{data.name}</h2>
                 {data.location.display_address.map((arr, id) =>
-                  <p key={id}>{arr}</p>)}
-                <p>{data.phone}</p>
-                <img src={data.image_url} alt='yay pic' />
-                <p></p>
+                  <p className='listAddress' key={id}>{arr}</p>)}
+                <p className='listPhone'>{data.display_phone}</p>
+                <img className='listImg' src={data.image_url} alt='yay pic' />
               </div>
             )}
           </div>

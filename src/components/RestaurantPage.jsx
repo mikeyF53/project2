@@ -6,20 +6,22 @@ const RestaurantPage = (props) => {
   // console.log(props)
   return (
     <div>
-      <h2>Random Pick For You</h2>
+      <h3>Random Pick For You</h3>
       {
         props.randRest ?
           <div>
-            <h2>{props.randRest.name}</h2>
-            {props.randRest.location.display_address.map((arr, id) => <p key={id}>{arr}</p>)}
-            <p>{props.randRest.phone}</p>
-            <img src={props.randRest.image_url} alt='yay pic'/>
+            <h2 className='randName'>{props.randRest.name}</h2>
+            {props.randRest.location.display_address.map((arr, id) => 
+            <p className='randAddress' key={id}>{arr}</p>)}
+            <p className='randPhone'>{props.randRest.display_phone}</p>
+            <img className='randImg' src={props.randRest.image_url} alt='yay pic'/>
           </div>
           :
           <>LOADING GIF</>
       }
        <br />
-      If you dont like it here's a<br />
+      <div>If you dont like it here's a</div>
+      <br />
       <Link to="/components/RestaurantList">List of Restaurants</Link>
     </div>
   )
