@@ -27,9 +27,48 @@ input {
   display: flex;
   height: 100px;
 }
+h3 {
+  font-size: 30px;
+}
 .headerImg {
   position: absolute;
 }
 .headTitle {
   margin: 25px auto;
+  border: 2px solid #928a88e7;
+  color: black;
+  border-radius: 30px;
+  padding: 5px;
+}
+.randAddress, 
+.randPhone {
+  margin: 5px 0px 5px 0px;
+}
+input:focus {
+  outline: none;
+}
+.inputBox {
+  height: 20px;
+  width: 87px;
+  text-align: center;
+  animation: blinkerB 3s linear infinite;
+}
+
+.button {
+  margin: 11px;
+  padding: 6px;
+  font-size: 11px;
+  animation: blinkerA 2s linear infinite;
+}
+
+@keyframes blinkerA {  
+  50% { opacity: .1; }
+}
+@keyframes blinkerB {  
+  50% { opacity: .4; }
+}
+
+.loadingGif {
+  width: 50px;
+  height: 50px;
 }

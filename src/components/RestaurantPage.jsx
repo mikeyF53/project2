@@ -19,7 +19,7 @@ const RestaurantPage = (props) => {
             
           </div>
           :
-          <><img className='loadingGif'></img></>
+          <><img className='loadingGif'/></>
       }
        <br />
       <div>If you dont like it here's a</div>

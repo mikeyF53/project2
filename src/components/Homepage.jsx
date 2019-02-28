@@ -8,8 +8,9 @@ const Homepage = (props) => {
     <div>
       <Header />
       <form onSubmit={props.onSubmit}>
-        <input type='text' placeholder='ZipCode or City' onChange={props.onChange} />
-        <input type='submit' value='Submit' />
+        <input className='inputBox' type='text' placeholder='Zip Code or City' onChange={props.onChange} />
+        <br/>
+        <input className='button' type='submit' value='Submit' />
       </form>
       
     </div>
