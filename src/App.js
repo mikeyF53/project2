@@ -17,20 +17,29 @@ class App extends Component {
       restaurants: null,
       zipCode: null,
       randomRestdata: null,
+      lat: null,
+      long: null
+
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     // this.getCurrentPosition = this.getCurrentPosition.bind(this);
   }
-  async componentDidMount() {
-
-    const allRest = await getYelp()
-    this.setState({
-      zipCode: '',
-      restaurants: null,
-      randomRestdata: null
-    })
-  }
+  // async componentDidMount() {
+  //   navigator.geolocation.getCurrentPosition(position => {
+  //     this.setState({
+  //     lat: position.coords.latitude,
+  //     long: position.coords.longitude
+  //     })
+  //   })
+  //   const restData = await getYelp(lat, long)
+  //   const idx = Math.floor(Math.random() * restData.length)
+  //   this.setState({
+  //     lat: this.state.lat,
+  //     long: this.state.long,
+  //     randomRestData: restData[idx],
+  //   })
+  // }
   handleChange(e) {
     this.setState({
       zipCode: e.target.value,
@@ -54,7 +63,7 @@ class App extends Component {
   //     console.log(`${position.coords.latitude} ${position.coords.longitude}`);
   //   });
   //   }
-  
+
 
 
 
