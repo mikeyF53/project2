@@ -10,14 +10,16 @@ const RestaurantPage = (props) => {
       {
         props.randRest ?
           <div>
+            
             <h2 className='randName'>{props.randRest.name}</h2>
+            <img className='randImg' src={props.randRest.image_url} alt='yay pic'/>
             {props.randRest.location.display_address.map((arr, id) => 
             <p className='randAddress' key={id}>{arr}</p>)}
             <p className='randPhone'>{props.randRest.display_phone}</p>
-            <img className='randImg' src={props.randRest.image_url} alt='yay pic'/>
+            
           </div>
           :
-          <>LOADING GIF</>
+          <><img className='loadingGif'></img></>
       }
        <br />
       <div>If you dont like it here's a</div>

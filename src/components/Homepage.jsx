@@ -1,12 +1,12 @@
 import React from 'react'
 import { Route, Link } from "react-router-dom";
-import RestaurantPage from './RestaurantPage';
 
+import Header from './Header';
 
 const Homepage = (props) => {
   return (
     <div>
-      <h1>What's For Lunch?</h1>
+      <Header />
       <form onSubmit={props.onSubmit}>
         <input type='text' placeholder='ZipCode or City' onChange={props.onChange} />
         <input type='submit' value='Submit' />

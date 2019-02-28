@@ -24,7 +24,7 @@ const RestaurantList = (props) => {
             )}
           </div>
           :
-          <>LOADING GIF..</>
+          <><img className='loadingGif'></img></>
       }
      
     </div>

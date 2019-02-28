@@ -25,7 +25,7 @@ class App extends Component {
 
     const allRest = await getYelp()
     this.setState({
-      zipCode: null,
+      zipCode: '',
       restaurants: null,
       randomRestdata: null
     })
@@ -66,10 +66,10 @@ class App extends Component {
         )} />
         <Route exact path='/' render={(props) => (
           <Homepage
-
             onSubmit={this.handleSubmit}
             onChange={this.handleChange} />
         )} />
+
         <Route exact path="/" render={(props) => (
           <RestaurantPage {...props}
             // getLocation={this.getCurrentPosition()}

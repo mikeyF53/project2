@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  min-width: 600px;
 }
 img {
   width: 150px;
@@ -7,19 +8,28 @@ img {
   border-radius: 25px;
 }
 body {
-  background: #273E47;
-  color: #BF2A45;
+  background: #D8D838;
+  color: #BC1818;
 }
 a {
+  font-size: 20px;
   text-decoration: none;
-  color: #AD7299;
+  color: #0E1921;
 }
 input {
   border-radius: 20px;
-
-
 }
 .listInfo {
   width: 250px;
   display: inline-block;
+}
+.headerBox {
+  display: flex;
+  height: 100px;
+}
+.headerImg {
+  position: absolute;
+}
+.headTitle {
+  margin: 25px auto;
 }
