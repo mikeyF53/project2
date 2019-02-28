@@ -1,11 +1,14 @@
 import React from 'react'
+import { Route, Link } from "react-router-dom";
 
 
 const Nav = (props) => {
-  return(
+  return (
     <div>
-      <h1>Nav bar here</h1>
-      
+      <h1>
+        <Link to='/'>Back to Random Picker</Link>
+      </h1>
+
     </div>
 
   )

@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  min-width: 600px;
+  min-width: 675px;
 }
 img {
   width: 150px;
@@ -8,17 +8,22 @@ img {
   border-radius: 25px;
 }
 body {
-  background: #D8D838;
+  background: #F9F91D;
   color: #BC1818;
 }
 a {
-  font-size: 20px;
+  font-family: 'K2D', sans-serif;
+  font-size: 24px;
   text-decoration: none;
   color: #0E1921;
+}
+.formBox {
+  height: 90px;
 }
 input {
   border-radius: 20px;
 }
+
 .listInfo {
   width: 250px;
   display: inline-block;
@@ -28,46 +33,75 @@ input {
   height: 100px;
 }
 h3 {
-  font-size: 30px;
+  font-family: 'Sriracha', cursive;
+  font-size: 40px;
+  margin-bottom: 0;
+  margin-top: 10px;
 }
+/* h3.title {
+ 
+} */
 .headerImg {
   position: absolute;
 }
-.headTitle {
-  margin: 25px auto 13px;
-  border: 2px solid #928a88e7;
-  color: black;
-  border-radius: 30px;
-  padding: 10px;
-}
 .randAddress, 
 .randPhone {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 20px;
+  height: 25px;
   margin: 5px 0px 5px 0px;
 }
 input:focus {
   outline: none;
 }
-.inputBox {
-  height: 20px;
-  width: 87px;
-  text-align: center;
-  animation: blinkerB 3s linear infinite;
+.headTitle {
+  font-family: 'Permanent Marker', cursive;
+  margin: 11px auto 13px;
+  border: 2px solid #928a88e7;
+  color: black;
+  border-radius: 30px;
+  padding: 10px 0 2px;
+  animation: blinkerC 1s linear infinite;
+  animation-duration: 4s;
+  height: 60px;
+  width: 365px;
 }
-
+.inputBox {
+  height: 21px;
+  width: 100px;
+  text-align: center;
+  animation: blinkerB 1s linear infinite;
+  animation-duration: 3s;
+}
 .button {
+  width: 70px;
   margin: 11px;
   padding: 6px;
   font-size: 11px;
-  animation: blinkerA 2s linear infinite;
+  animation: blinkerA 1s linear infinite;
+  animation-duration: 2s;
 }
-
+.thinkingDot {
+  width: 27px;
+  height: 27px;
+  margin: 0 auto;
+  border-radius: 50px;
+  background: white;
+  animation: blinkerD 1s linear infinite;
+  animation-duration: 1s;
+}
 @keyframes blinkerA {  
-  50% { opacity: .2; }
+  50% { opacity: .3; }
 }
 @keyframes blinkerB {  
-  50% { opacity: .4; }
+  50% { opacity: .3; }
 }
-
+@keyframes blinkerC {  
+  50% { opacity: .3; }
+}
+@keyframes blinkerD {  
+  50% { opacity: .3 }
+}
 .loadingGif {
   width: 50px;
   height: 50px;

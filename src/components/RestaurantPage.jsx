@@ -3,7 +3,7 @@ import { Route, Link } from "react-router-dom";
 import RestaurantList from './RestaurantList';
 
 const RestaurantPage = (props) => {
-  // console.log(props)
+  console.log(props.randRest)
   return (
     <div>
       <h3>Random Pick For You</h3>
@@ -12,7 +12,7 @@ const RestaurantPage = (props) => {
           <div>
 
             <h2 className='randName'>
-              <a href={props.url}>{props.randRest.name}</a>
+              <a href={props.randRest.url} target='blank'>{props.randRest.name}</a>
             </h2>
             <img className='randImg' src={props.randRest.image_url} alt='yay pic' />
             {props.randRest.location.display_address.map((arr, id) =>
@@ -31,3 +31,4 @@ const RestaurantPage = (props) => {
   )
 }
 export default RestaurantPage;
+

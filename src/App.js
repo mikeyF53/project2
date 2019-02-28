@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { getYelp, yelpImg } from './services/api-helper';
+import { getYelp, geoRest } from './services/api-helper';
 import Header from './components/Header';
-import Nav from './components/Nav';
 import RestaurantPage from './components/RestaurantPage';
 import Homepage from './components/Homepage';
 import RestaurantList from './components/RestaurantList';
 import Footer from './components/Footer';
 import { Route, Link } from "react-router-dom";
 import './App.css';
+import axios from 'axios'
+const API_KEY = 'RJJInOzvTn65u20AVDfKP9jx-goDOjHp23kiP5Ve_McoQxLljzX2a2N4APm3FH30DjKb9pVgScteKeA1EwuhlM-QhHImrVrUmR77pY_0Lykd-ZBepvOGpk_Z2NhyXHYx';
+const URL = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search';
 
 
 class App extends Component {
@@ -17,29 +19,29 @@ class App extends Component {
       restaurants: null,
       zipCode: null,
       randomRestdata: null,
-      lat: null,
-      long: null
-
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.getCurrentPosition = this.getCurrentPosition.bind(this);
   }
-  // async componentDidMount() {
-  //   navigator.geolocation.getCurrentPosition(position => {
-  //     this.setState({
-  //     lat: position.coords.latitude,
-  //     long: position.coords.longitude
-  //     })
-  //   })
-  //   const restData = await getYelp(lat, long)
-  //   const idx = Math.floor(Math.random() * restData.length)
-  //   this.setState({
-  //     lat: this.state.lat,
-  //     long: this.state.long,
-  //     randomRestData: restData[idx],
-  //   })
-  // }
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      let lat = position.coords.latitude;
+      let long = position.coords.longitude;
+
+      let resp = await axios(`${URL}?latitude=${lat}&longitude=${long}`, {
+        headers: {
+          Authorization: 'Bearer ' + API_KEY
+        }
+      });
+
+      let restData = resp.data.businesses
+      let idx = Math.floor(Math.random() * restData.length)
+      restData = restData[idx]
+      this.setState({
+        randomRestData: restData
+      })
+    })
+  }
   handleChange(e) {
     this.setState({
       zipCode: e.target.value,
@@ -52,20 +54,15 @@ class App extends Component {
     const restData = await getYelp(zip)
     const idx = Math.floor(Math.random() * restData.length)
     this.setState({
-      waitingText: null,
       restaurants: restData,
       randomRestData: restData[idx],
     })
   }
-
-  // getCurrentPosition() {
-  //   navigator.geolocation.getCurrentPosition(position => {
-  //     console.log(`${position.coords.latitude} ${position.coords.longitude}`);
-  //   });
-  //   }
-
-
-
+  getCurrentPosition() {
+    navigator.geolocation.getCurrentPosition(position => {
+      console.log(`${position.coords.latitude} ${position.coords.longitude}`);
+    });
+  }
 
   render() {
     return (
@@ -82,8 +79,8 @@ class App extends Component {
 
         <Route exact path="/" render={(props) => (
           <RestaurantPage {...props}
-            // getLocation={this.getCurrentPosition()}
-            randRest={this.state.randomRestData} />
+            randRest={this.state.randomRestData}
+          />
         )} />
       </div>
     );
