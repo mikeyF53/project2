@@ -1,17 +1,3 @@
-
-### `Technologies`
-
-I will be using axios to fetch the data from the Yelp Api. Along with mapping the list of restaurant to render, as will as randomly picking a restaurant.
-
-
-
-
-## Solution
-
-I could use Math.random to generate a random number for the index of the array restaurants.
-
-## MVP AND POST MVP
-
 # Project Overview
 
 ### App Name: What's for Lunch?
@@ -21,22 +7,28 @@ A simple app to help you decide what to eat nearby.
 
 ## Project Description
 
-This project is to help users decide what to get for lunch. It will randomly generate a place to eat in around your location. The user will input their zipcode and it will return a place to eat, as well as a list if the user does not like the randomized place.
+This app will help users decide what to get for lunch. It will randomly generate a place to eat around your location. The user will input their zipcode and it will return a place to eat, as well as a list of restaurants if the user does not like the randomized place.
 
 ## Wireframes
+
+See folder
 
 ## Api used
 
 I will be using the Yelp api to get a list of restaurant data.
 https://www.yelp.com/developers/documentation/v3/get_started
 
+### `Technologies`
+
+I will be using axios to fetch the data from the Yelp Api. Using random as will as randomly picking a restaurant. I also have geolocation activated.
 
 ## Obstacles
 
-The obstacles I had was trying to route and link to the right pages and placement. I also had a problem getting the geolocation to work.
+The obstacles I had was trying to route and link to the right pages and right placement. I also had a problem getting the geolocation to work.
 
 ## Solution
 
+Instead of having the api call from api-helper, I had to put it ino App.js in the componentDidMount funtion. I believe this fixed the issue because of a time delay when it was calling another function from api-helper.
 
 ## Code Snip
  
@@ -65,12 +57,10 @@ My MVP will be an app thats able to generate a random restaurant once the zipcod
 
 In my Post MVP will incorporate the slackbot to run the app  and generate a place to eat along with a timer that will let students know when lunch is over. I will also add the google api to show where the nearby restaurants on the map.
 
-
 #### MVP EXAMPLE
 - Find and use external api 
 - Render data on page 
 - Allow user to input zip and see restaurants nearby
-
 
 #### PostMVP EXAMPLE
 - add Google Api
