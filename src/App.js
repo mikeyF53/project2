@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import { Route, Link } from "react-router-dom";
 import './App.css';
 import axios from 'axios'
-const API_KEY = 'RJJInOzvTn65u20AVDfKP9jx-goDOjHp23kiP5Ve_McoQxLljzX2a2N4APm3FH30DjKb9pVgScteKeA1EwuhlM-QhHImrVrUmR77pY_0Lykd-ZBepvOGpk_Z2NhyXHYx';
+const API_KEY = process.env.REACT_APP_API_KEY
 const URL = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search';
 
 
@@ -58,11 +58,7 @@ class App extends Component {
       randomRestData: restData[idx],
     })
   }
-  getCurrentPosition() {
-    navigator.geolocation.getCurrentPosition(position => {
-      console.log(`${position.coords.latitude} ${position.coords.longitude}`);
-    });
-  }
+ 
 
   render() {
     return (
@@ -82,6 +78,7 @@ class App extends Component {
             randRest={this.state.randomRestData}
           />
         )} />
+        <Footer />
       </div>
     );
   }

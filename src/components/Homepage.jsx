@@ -11,7 +11,7 @@ const Homepage = (props) => {
         <input className='inputBox' type='text' placeholder='Zip Code or City' onChange={props.onChange} />
         <br/>
         <input className='button' type='submit' value='Submit' />
-        <div className='thinkingDot'></div>
+        {/* <div className='thinkingDot'></div> */}
       </form>
       
     </div>

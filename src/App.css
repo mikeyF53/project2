@@ -9,40 +9,86 @@ img {
 }
 body {
   background: #F9F91D;
-  color: #BC1818;
+  color:rgb(214, 39, 51)
+  /* color: #BC1818; */
 }
 a {
   font-family: 'K2D', sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   text-decoration: none;
   color: #0E1921;
 }
+.randTitle {
+  font-size: 30px;
+}
+.randomLink {
+  font-size: 16px;
+}
 .formBox {
-  height: 90px;
+  height: 45px;
 }
 input {
   border-radius: 20px;
 }
 
 .listInfo {
+  overflow-x: auto;
   width: 250px;
   display: inline-block;
+  border: 2px solid black;
+  border-radius: 55px;
+  margin: 5px;
+}
+.listInfo:hover {
+  background-color: lightgrey
+}
+.listContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 20fr));
+  row-gap: 5px;
+}
+.loadingGif {
+  width: 50px;
+  height: 50px;
 }
 .headerBox {
   display: flex;
-  height: 100px;
+  height: 127px;
 }
 h3 {
   font-family: 'Sriracha', cursive;
   font-size: 40px;
-  margin-bottom: 0;
+  margin-bottom: -10px;
   margin-top: 10px;
 }
-/* h3.title {
- 
-} */
+
 .headerImg {
   position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+input:focus {
+  outline: none;
+}
+.headTitle {
+  font-family: 'Permanent Marker', cursive;
+  margin: 30px auto 13px;
+  border: 2px solid #928a88e7;
+  color: black;
+  border-radius: 30px;
+  padding: 10px 0 2px;
+  height: 60px;
+  width: 365px;
+  animation: grow 1s linear infinite;
+  animation-duration: 3s;
+}
+.title {
+    margin-bottom: 15px;
+    margin-top: -30px;
+}
+.randContainer {
+    margin: 1px;
 }
 .randAddress, 
 .randPhone {
@@ -51,20 +97,8 @@ h3 {
   height: 25px;
   margin: 5px 0px 5px 0px;
 }
-input:focus {
-  outline: none;
-}
-.headTitle {
-  font-family: 'Permanent Marker', cursive;
-  margin: 11px auto 13px;
-  border: 2px solid #928a88e7;
-  color: black;
-  border-radius: 30px;
-  padding: 10px 0 2px;
-  animation: blinkerC 1s linear infinite;
-  animation-duration: 4s;
-  height: 60px;
-  width: 365px;
+.randName {
+  margin: 5px;
 }
 .inputBox {
   height: 21px;
@@ -74,35 +108,40 @@ input:focus {
   animation-duration: 3s;
 }
 .button {
+  color:black;
+  
   width: 70px;
-  margin: 11px;
+  margin: 3px;
   padding: 6px;
   font-size: 11px;
   animation: blinkerA 1s linear infinite;
   animation-duration: 2s;
 }
+.button:hover{
+  background: rgb(214, 39, 51);
+  font-size: 13px;
+
+}
 .thinkingDot {
-  width: 27px;
-  height: 27px;
+  width: 25px;
+  height: 25px;
   margin: 0 auto;
   border-radius: 50px;
   background: white;
   animation: blinkerD 1s linear infinite;
   animation-duration: 1s;
 }
-@keyframes blinkerA {  
-  50% { opacity: .3; }
+
+@keyframes grow {  
+  50% {  transform: scale(1.2); }
 }
-@keyframes blinkerB {  
-  50% { opacity: .3; }
-}
-@keyframes blinkerC {  
-  50% { opacity: .3; }
-}
-@keyframes blinkerD {  
-  50% { opacity: .3 }
-}
+
 .loadingGif {
   width: 50px;
   height: 50px;
+}
+.footer {
+  background: black;
+  border: 2px solid lightgrey;
+  border-radius: 50px;
 }

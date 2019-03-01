@@ -1,9 +1,11 @@
 import React from 'react'
 
 const Footer = (props) => {
-  return(
+  return (
     <div>
-      <h1>Whats</h1>
+      <div>
+        <p className='footer'>Powered by GA Bananas 🍌 2019</p>
+      </div>
     </div>
 
   )

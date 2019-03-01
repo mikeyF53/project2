@@ -9,24 +9,23 @@ const RestaurantPage = (props) => {
       <h3>Random Pick For You</h3>
       {
         props.randRest ?
-          <div>
+          <div className='randContainer'>
 
             <h2 className='randName'>
-              <a href={props.randRest.url} target='blank'>{props.randRest.name}</a>
+              <a className='randTitle' href={props.randRest.url} target='blank'>{props.randRest.name}</a>
             </h2>
             <img className='randImg' src={props.randRest.image_url} alt='yay pic' />
             {props.randRest.location.display_address.map((arr, id) =>
               <p className='randAddress' key={id}>{arr}</p>)}
             <p className='randPhone'>{props.randRest.display_phone}</p>
-
           </div>
           :
-          <><img className='loadingGif' /></>
+          <><img className='loadingGif' src={window.location.origin + '/media/loading.gif'} alt ='yay'/></>
       }
       <br />
       <div>If you dont like it here's a</div>
       <br />
-      <Link to="/components/RestaurantList">List of Restaurants</Link>
+      <Link className='randomLink' to="/components/RestaurantList">List of Restaurants</Link>
     </div>
   )
 }

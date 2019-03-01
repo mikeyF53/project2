@@ -5,7 +5,7 @@ const Header = (props) => {
     <div>
       <div className='headerBox'>
         <div>
-        <img className='headerImg' src=''></img>
+        <img className='headerImg' src={window.location.origin + '/media/food1.png'}></img>
         </div>
       <h1 className='headTitle'>What's For Lunch?</h1>
       </div>
