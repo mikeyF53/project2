@@ -1,6 +1,5 @@
 import React from 'react'
-import { Route, Link } from "react-router-dom";
-import RestaurantList from './RestaurantList';
+import { Link } from "react-router-dom"
 
 const RestaurantPage = (props) => {
   console.log(props.randRest)
@@ -20,7 +19,7 @@ const RestaurantPage = (props) => {
             <p className='randPhone'>{props.randRest.display_phone}</p>
           </div>
           :
-          <><img className='loadingGif' src={window.location.origin + '/media/loading.gif'} alt ='yay'/></>
+          <><img className='loadingGif' src={window.location.origin + '/media/loading.gif'} alt='yay' /></>
       }
       <br />
       <div>If you dont like it here's a</div>
@@ -28,6 +27,6 @@ const RestaurantPage = (props) => {
       <Link className='randomLink' to="/components/RestaurantList">List of Restaurants</Link>
     </div>
   )
-}
+};
 export default RestaurantPage;
 

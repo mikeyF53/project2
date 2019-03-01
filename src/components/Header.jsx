@@ -10,11 +10,6 @@ const Header = (props) => {
       <h1 className='headTitle'>What's For Lunch?</h1>
       </div>
     </div>
-
   )
-
-}
-
-
-
+};
 export default Header

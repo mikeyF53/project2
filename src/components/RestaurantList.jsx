@@ -1,15 +1,10 @@
 import React from 'react'
-import RestaurantPage from './RestaurantPage'
-import Nav from './Nav';
-
-import { Route, Link } from "react-router-dom";
+import Nav from './Nav'
 
 const RestaurantList = (props) => {
-  console.log(props.restaurant)
   return (
     <div>
       <Nav />
-
       <h3 className='title'>Restaurant List</h3>
       {
         props.restaurant ?
@@ -17,8 +12,8 @@ const RestaurantList = (props) => {
             {props.restaurant.map(data =>
               <div className='listInfo' key={data.id}>
                 <h2 className='listName' >
-                <img className='listImg' src={data.image_url} alt='yay pic' />
-                <br/>
+                  <img className='listImg' src={data.image_url} alt='yay pic' />
+                  <br />
                   <a href={data.url} target='blank'>{data.name}</a>
                 </h2>
                 {data.location.display_address.map((arr, id) =>
@@ -30,8 +25,7 @@ const RestaurantList = (props) => {
           :
           <>Reached this page by error...</>
       }
-
     </div>
   )
-}
+};
 export default RestaurantList

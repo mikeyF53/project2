@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { getYelp, geoRest } from './services/api-helper';
-import Header from './components/Header';
+import { getYelp } from './services/api-helper';
 import RestaurantPage from './components/RestaurantPage';
 import Homepage from './components/Homepage';
 import RestaurantList from './components/RestaurantList';
@@ -11,7 +10,6 @@ import axios from 'axios'
 const API_KEY = process.env.REACT_APP_API_KEY
 const URL = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search';
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -19,21 +17,19 @@ class App extends Component {
       restaurants: null,
       zipCode: null,
       randomRestdata: null,
-    }
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  }
+  };
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(async (position) => {
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
-
       let resp = await axios(`${URL}?latitude=${lat}&longitude=${long}`, {
         headers: {
           Authorization: 'Bearer ' + API_KEY
         }
       });
-
       let restData = resp.data.businesses
       let idx = Math.floor(Math.random() * restData.length)
       restData = restData[idx]
@@ -41,13 +37,12 @@ class App extends Component {
         randomRestData: restData
       })
     })
-  }
+  };
   handleChange(e) {
     this.setState({
       zipCode: e.target.value,
     })
-  }
-
+  };
   async handleSubmit(e) {
     e.preventDefault()
     const zip = this.state.zipCode
@@ -57,9 +52,7 @@ class App extends Component {
       restaurants: restData,
       randomRestData: restData[idx],
     })
-  }
- 
-
+  };
   render() {
     return (
       <div className="App" >
@@ -80,8 +73,8 @@ class App extends Component {
         )} />
         <Footer />
       </div>
-    );
+    )
   }
-}
+};
 
 export default App;
